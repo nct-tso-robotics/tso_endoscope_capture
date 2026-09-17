@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>endoscope_capture</name>
+  <version>0.1.0</version>
+  <description>Integrated DeckLink acquisition and calibrated row-interleaved stereo publishing.</description>
+  <maintainer email="lorenzo.mazza@nct-dresden.de">Lorenzo Mazza</maintainer>
+  <license>MIT</license>
+  <author email="lorenzo.mazza@nct-dresden.de">Lorenzo Mazza</author>
+  <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
+  <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake</buildtool_depend>
+  <build_depend condition="$ROS_VERSION == 1">message_generation</build_depend>
+  <exec_depend condition="$ROS_VERSION == 1">message_runtime</exec_depend>
+  <buildtool_depend condition="$ROS_VERSION == 2">rosidl_default_generators</buildtool_depend>
+  <exec_depend condition="$ROS_VERSION == 2">rosidl_default_runtime</exec_depend>
+  <depend condition="$ROS_VERSION == 1">roscpp</depend>
+  <depend condition="$ROS_VERSION == 1">image_transport</depend>
+  <depend condition="$ROS_VERSION == 2">rclcpp</depend>
+  <depend condition="$ROS_VERSION == 2">rcl_interfaces</depend>
+  <depend>sensor_msgs</depend>
+  <depend>camera_info_manager</depend>
+  <depend>std_msgs</depend>
+  <depend>libopencv-dev</depend>
+  <depend>yaml-cpp</depend>
+  <exec_depend condition="$ROS_VERSION == 1">roslaunch</exec_depend>
+  <exec_depend condition="$ROS_VERSION == 2">launch_ros</exec_depend>
+  <exec_depend condition="$ROS_VERSION == 2">launch_xml</exec_depend>
+  <member_of_group condition="$ROS_VERSION == 2">rosidl_interface_packages</member_of_group>
+  <export>
+    <build_type condition="$ROS_VERSION == 1">catkin</build_type>
+    <build_type condition="$ROS_VERSION == 2">ament_cmake</build_type>
+  </export>
+</package>

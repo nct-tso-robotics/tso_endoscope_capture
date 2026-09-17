@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.pixi/
+build/
+dist/
+Testing/
+*.bag
+*.avi
+*.mp4

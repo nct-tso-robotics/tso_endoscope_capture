@@ -1,0 +1,72 @@
+[workspace]
+name = "endoscope-capture"
+version = "0.1.0"
+description = "Integrated DeckLink capture and calibrated stereo publishing"
+authors = ["Lorenzo Mazza <lorenzo.mazza@nct-dresden.de>"]
+license = "MIT"
+license-file = "LICENSE"
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+libopencv = ">=4.10,<5"
+
+[feature.ros1]
+channels = ["https://prefix.dev/robostack-noetic"]
+
+[feature.ros1.dependencies]
+bash = ">=5,<6"
+coreutils = ">=9,<10"
+ros-noetic-ros-core = "*"
+ros-noetic-roscpp = "*"
+ros-noetic-image-transport = "*"
+ros-noetic-camera-info-manager = "*"
+cmake = ">=3.20,<4"
+ninja = ">=1.12,<2"
+cxx-compiler = "*"
+ros-noetic-sensor-msgs = "*"
+ros-noetic-message-generation = "*"
+ros-noetic-message-runtime = "*"
+ros-noetic-roslaunch = "*"
+yaml-cpp = ">=0.8,<0.9"
+empy = ">=3.3.4,<4"
+
+[feature.ros1.tasks]
+build-capture = "bash tools/build_capture.sh"
+test-capture = { cmd = "bash tools/run_tests.sh build/ros", depends-on = ["build-capture"] }
+capture = "roslaunch endoscope_capture endoscope.launch"
+test = { depends-on = ["test-capture"] }
+
+[feature.ros2]
+channels = ["https://prefix.dev/robostack-jazzy"]
+
+[feature.ros2.dependencies]
+bash = ">=5,<6"
+coreutils = ">=9,<10"
+cmake = ">=3.20,<4"
+ninja = ">=1.12,<2"
+cxx-compiler = "*"
+yaml-cpp = ">=0.8,<0.9"
+ros-jazzy-ros-base = "*"
+ros-jazzy-rclcpp = "*"
+ros-jazzy-sensor-msgs = "*"
+ros-jazzy-std-msgs = "*"
+ros-jazzy-camera-info-manager = "*"
+ros-jazzy-ament-cmake = "*"
+ros-jazzy-rosidl-default-generators = "*"
+ros-jazzy-rosidl-default-runtime = "*"
+ros-jazzy-launch-ros = "*"
+ros-jazzy-launch-xml = "*"
+
+[feature.ros2.tasks]
+build-capture = "bash tools/build_capture.sh"
+test-capture = { cmd = "bash tools/run_tests.sh build/ros2", depends-on = ["build-capture"] }
+capture = "ros2 launch endoscope_capture endoscope.launch.xml"
+test = { depends-on = ["test-capture"] }
+
+[environments]
+ros1 = { features = ["ros1"] }
+ros2 = { features = ["ros2"] }
+
+[activation]
+scripts = ["tools/activate_capture.sh"]

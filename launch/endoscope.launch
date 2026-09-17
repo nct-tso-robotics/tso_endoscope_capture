@@ -1,0 +1,35 @@
+<launch>
+  <arg name="namespace" default="/endoscope"/>
+  <arg name="publish_rate" default="30"/>
+  <arg name="device_index" default="0"/>
+  <arg name="mode" default="1080p5994"/>
+  <arg name="frame_id" default="camera"/>
+  <arg name="buffer_count" default="4"/>
+  <arg name="left_calibration" default="$(find endoscope_capture)/config/DefaultStereoCalibration/left.yaml"/>
+  <arg name="right_calibration" default="$(find endoscope_capture)/config/DefaultStereoCalibration/right.yaml"/>
+  <arg name="camera_info_url" default=""/>
+  <arg name="scale_x" default="0.5"/>
+  <arg name="scale_y" default="1.0"/>
+  <arg name="opencv_threads" default="1"/>
+  <arg name="duration_seconds" default="0"/>
+  <arg name="metrics_file" default=""/>
+  <arg name="split_metrics_file" default=""/>
+  <group ns="$(arg namespace)">
+    <node pkg="endoscope_capture" type="endoscope_capture_node" name="capture" output="screen" required="true">
+      <param name="publish_rate" value="$(arg publish_rate)" type="double"/>
+      <param name="device_index" value="$(arg device_index)" type="int"/>
+      <param name="mode" value="$(arg mode)"/>
+      <param name="frame_id" value="$(arg frame_id)"/>
+      <param name="buffer_count" value="$(arg buffer_count)" type="int"/>
+      <param name="left_calibration" value="$(arg left_calibration)"/>
+      <param name="right_calibration" value="$(arg right_calibration)"/>
+      <param name="camera_info_url" value="$(arg camera_info_url)"/>
+      <param name="scale_x" value="$(arg scale_x)" type="double"/>
+      <param name="scale_y" value="$(arg scale_y)" type="double"/>
+      <param name="opencv_threads" value="$(arg opencv_threads)" type="int"/>
+      <param name="duration_seconds" value="$(arg duration_seconds)" type="double"/>
+      <param name="metrics_file" value="$(arg metrics_file)"/>
+      <param name="split_metrics_file" value="$(arg split_metrics_file)"/>
+    </node>
+  </group>
+</launch>
