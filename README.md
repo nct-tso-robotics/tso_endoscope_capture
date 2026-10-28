@@ -6,6 +6,9 @@ Both use the same DeckLink backend, stereo processor and rate estimator. Capture
 and splitting share frame buffers within the process. The host supplies Blackmagic
 Desktop Video and its kernel driver; Pixi supplies the ROS, OpenCV and build dependencies.
 
+See [Blackmagic driver requirements](patches/README.md) for Ubuntu packages
+and the patch needed with Desktop Video 16.4 on PREEMPT_RT.
+
 ## Build and launch
 
 Run the commands for your ROS version from the repository root.

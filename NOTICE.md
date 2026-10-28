@@ -12,3 +12,7 @@ and the original BlackMagicCapture backend author, mediassist (2011).
 interface and dispatch files. Each retains its complete Blackmagic Design
 copyright and license notice. The host installation supplies the Desktop Video
 runtime libraries and kernel drivers.
+
+`patches/blackmagic-io-16.4-rt-notify-layout.patch` modifies Blackmagic's
+`bmio_client.h`. The patch includes its original copyright and permissive license
+notice.
